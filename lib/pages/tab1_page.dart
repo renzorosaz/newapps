@@ -13,7 +13,7 @@ class Tab1Page extends StatelessWidget {
     //newsService.headlines;
 
     return Scaffold(
-      body:ListaNoticias(noticias: headlines,)
+      body:ListaNoticias(noticias:headlines ,)
       
     );
   }

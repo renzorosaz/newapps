@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/news_models.dart';
+import 'package:news_app/theme/tema.dart';
 
 
 class ListaNoticias extends StatelessWidget {
 
   final List<Article> noticias;
+  
 
   const ListaNoticias({this.noticias});
 
@@ -15,7 +17,10 @@ class ListaNoticias extends StatelessWidget {
         itemCount: this.noticias.length,  
         itemBuilder: (BuildContext context, int index){
 
-          return _Noticia(noticia:this.noticias[index], index: index,);
+          return _Noticia(
+            index: index,
+           noticia: this.noticias[index],
+          );
 
         }
       );
@@ -29,10 +34,10 @@ class _Noticia extends StatelessWidget {
   final Article noticia;
   final int index;
 
-  const _Noticia({
+  const _Noticia({Key key,
     @required this.noticia,
     @required this.index
-    });
+    }) : super(key:key);
   
   @override
   Widget build(BuildContext context) {
@@ -53,14 +58,20 @@ class _TarjetaTopBar extends StatelessWidget {
 
   const _TarjetaTopBar({this.noticia, this.index});
 
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child: Row(
         children: <Widget>[
-          Text('$index + 1')
+          Text('${index}' ,  style: TextStyle(color: miTema.accentColor),),
+          Text('${noticia.source.name}.' ,  style: TextStyle(color: miTema.accentColor),),
         ],
       ),
     );
+
+   
   }
+
 }

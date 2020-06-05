@@ -55,7 +55,7 @@ class Article {
 
     factory Article.fromJson(Map<String, dynamic> json) => Article(
         source: Source.fromJson(json["source"]),
-        author: json["author"],
+        author: json["author"]== null ? null : json["author"],
         title: json["title"],
         description: json["description"],
         url: json["url"],
@@ -66,7 +66,7 @@ class Article {
 
     Map<String, dynamic> toJson() => {
         "source": source.toJson(),
-        "author": author,
+        "author": author  == null ? null : author,
         "title": title,
         "description": description,
         "url": url,
@@ -77,47 +77,23 @@ class Article {
 }
 
 class Source {
+   String id;
+    String name;
+
     Source({
         this.id,
         this.name,
     });
 
-    Id id;
-    Name name;
+    
 
     factory Source.fromJson(Map<String, dynamic> json) => Source(
-        id: idValues.map[json["id"]],
-        name: nameValues.map[json["name"]],
+       id: json["id"] == null ? null : json["id"],
+        name: json["name"],
     );
 
     Map<String, dynamic> toJson() => {
-        "id": idValues.reverse[id],
-        "name": nameValues.reverse[name],
+        "id": id == null ? null : id,
+        "name": name,
     };
-}
-
-enum Id { TECHCRUNCH }
-
-final idValues = EnumValues({
-    "techcrunch": Id.TECHCRUNCH
-});
-
-enum Name { TECH_CRUNCH }
-
-final nameValues = EnumValues({
-    "TechCrunch": Name.TECH_CRUNCH
-});
-
-class EnumValues<T> {
-    Map<String, T> map;
-    Map<T, String> reverseMap;
-
-    EnumValues(this.map);
-
-    Map<T, String> get reverse {
-        if (reverseMap == null) {
-            reverseMap = map.map((k, v) => new MapEntry(v, k));
-        }
-        return reverseMap;
-    }
 }

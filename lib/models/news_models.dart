@@ -77,7 +77,7 @@ class Article {
 }
 
 class Source {
-   String id;
+   dynamic id;
     String name;
 
     Source({

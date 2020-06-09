@@ -23,7 +23,7 @@ class _Tab1PageState extends State<Tab1Page> with AutomaticKeepAliveClientMixin{
         ? Center(
           child: CircularProgressIndicator(),
         )
-        : ListaNoticias(noticias: headlines)
+        : ListaNoticias(noticias: headlines,)
       
     );
   }

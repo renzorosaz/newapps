@@ -14,7 +14,7 @@ class ListaNoticias extends StatelessWidget {
   Widget build(BuildContext context) {
 
       return ListView.builder(
-        itemCount: this.noticias.length,  
+        itemCount: this.noticias.length,
         itemBuilder: (BuildContext context, int index){
             
           return _Noticia(noticia: this.noticias[index],index: index,);
